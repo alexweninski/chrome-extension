@@ -1,0 +1,38 @@
+{
+    "manifest_version": 3,
+    "name": "Screen Time Justification",
+    "version": "1.0",
+    "description": "A custom extension for my device that will check users reason for visiting certain websites. Will block user if reason is not good",
+    "permissions": [
+        "activeTab",
+        "storage"
+    ],
+    "content_scripts": [
+        {
+            "matches": [
+                "<all_urls>"
+            ],
+            "js": [
+                "content.js"
+            ]
+        }
+    ],
+    "action": {
+        "default_popup": "options.html"
+    },
+    "web_accessible_resources": [
+        {
+            "resources": [
+                "content.html"
+            ],
+            "matches": [
+                "https://*/*",
+                "http://*/*"
+            ]
+        }
+    ],
+    "background": {
+        "service_worker": "background.js"
+    },
+    "options_page": "options.html"
+}

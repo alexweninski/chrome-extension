@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Mindful Blocker - Settings</title>
+    <style>
+        body {
+            background-color: #0a0a0c;
+            color: #f3f4f6;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 16px;
+            width: 360px;
+            /* Ideal width for extension popups */
+            box-sizing: border-box;
+        }
+
+        h3 {
+            margin-top: 0;
+            margin-bottom: 14px;
+            font-size: 18px;
+            color: #ffffff;
+            font-weight: 600;
+            border-bottom: 1px solid #27272a;
+            padding-bottom: 8px;
+        }
+
+        label {
+            display: block;
+            margin-top: 12px;
+            margin-bottom: 4px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #d4d4d8;
+        }
+
+        /* Scrollable container so long lists don't break popup height */
+        .table-container {
+            max-height: 110px;
+            overflow-y: auto;
+            border: 1px solid #27272a;
+            border-radius: 6px;
+            background: #09090b;
+            margin-bottom: 10px;
+        }
+
+        #website-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        #website-table-body tr {
+            display: flex;
+            margin-top: 8px;
+            justify-content: space-between;
+            border-bottom: 1px solid #27272a;
+        }
+
+        #website-table-body tr:last-child {
+            width: full;
+            border-bottom: none;
+        }
+
+        #website-table-body td {
+            padding: 6px 10px;
+            font-size: 13px;
+            color: #f4f4f5;
+        }
+
+        /* Inputs */
+        input[type="text"],
+        input[type="password"] {
+            width: 100%;
+            padding: 9px 12px;
+            box-sizing: border-box;
+            border-radius: 6px;
+            border: 1px solid #3f3f46;
+            background: #09090b;
+            color: #f4f4f5;
+            font-size: 13px;
+            outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            margin-top: 4px;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"]:focus,
+        input[type="password"]:focus {
+            border-color: #22c55e;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.15);
+        }
+
+        .button-group {
+            display: flex;
+            gap: 8px;
+            margin-top: 4px;
+        }
+
+        /* Buttons */
+        button {
+            padding: 8px 12px;
+            background: #22c55e;
+            color: #ffffff;
+            border: none;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s, transform 0.1s;
+        }
+
+        button:hover {
+            background: #16a34a;
+        }
+
+        .delete-btn {
+            background: none;
+            border: none;
+            color: #777;
+            /* Base gray color for the X */
+            font-size: 1.1rem;
+            /* Adjust size of the X */
+            font-weight: bold;
+            cursor: pointer;
+            padding: 4px 8px;
+            transition: color 0.2s ease;
+            /* Smooth transition for the hover effect */
+        }
+
+        /* Lighter gray on hover */
+        .delete-btn:hover {
+            color: #ccc;
+            /* Lighter gray */
+        }
+
+        /* To make it hang to the right inside the table cell */
+        td.actions-cell {
+            text-align: right;
+            /* Pushes the button to the right edge of the cell */
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #clear-list-button {
+            background: #ef4444;
+        }
+
+        #clear-list-button:hover {
+            background: #dc2626;
+        }
+
+        #save-btn {
+            width: 100%;
+            margin-top: 10px;
+            padding: 10px;
+        }
+
+        /* Status text */
+        #status {
+            margin-top: 10px;
+            font-size: 13px;
+            font-weight: 500;
+            color: #4ade80 !important;
+            text-align: center;
+            min-height: 18px;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Extension Settings</h3>
+
+    <label>Restricted Websites</label>
+    <div class="table-container">
+        <table id="website-table">
+            <tbody id="website-table-body"></tbody>
+        </table>
+    </div>
+
+    <label for="restricted-website-input">Add Website Domain</label>
+    <input type="text" id="restricted-website-input" placeholder="e.g. youtube.com">
+    <div class="button-group">
+        <button id="add-website-button">Add Website</button>
+        <button id="clear-list-button">Clear All</button>
+    </div>
+
+    <label for="api-key-input">OpenAI API Key</label>
+    <input type="password" id="api-key-input" placeholder="sk-..." />
+
+    <button id="save-btn">Save Settings</button>
+    <p id="status"></p>
+
+    <!-- Make sure this points to your options/popup javascript file -->
+    <script src="options.js"></script>
+</body>
+
+</html>
